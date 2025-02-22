@@ -1,0 +1,18 @@
+{
+  "calculator": {
+    "title": "Calculator",
+    "description": "A simple calculator application.",
+    "buttons": {
+      "add": "Add",
+      "subtract": "Subtract",
+      "multiply": "Multiply",
+      "divide": "Divide"
+    }
+  },
+  "item": {
+    "name": "Item Name",
+    "description": "Item Description",
+    "price": "Item Price",
+    "imgUrl": "Item Image URL"
+  }
+}
