@@ -14,7 +14,7 @@ This README file contains a list of demos, each with focus on a Copilot feature.
 
 For each demo you can find the entry file, a description of what to do and some notes on the expected behavior or possible continuations.
 
-> ⚠️ **Work in progress** ⚠️
+> ⚠️ **Work in progress**
 > This isn't yet the full list and I want to add more detailed instructions and record a short video for each demo.
 > Feedback, suggestions and PRs are welcome!
 
@@ -182,6 +182,24 @@ Possible continuations:
 - Use tailwind/css for the stile
 - Refactor the buttons in a new component
 - Add the memory buttons
+
+## Next Edit Suggestion
+
+Copilot suggests the next edit anywhere in your file, regardless of the cursor position.
+
+Make sure to enable the setting `github.copilot.nextEditSuggestions.enabled`
+
+Entry: `src/utils/product.ts`
+
+Go next to the `public price: number`, copilot should already suggest a new field in ghost text. Accept it and NES kicks in automatically.
+
+Add one more field `public maxDiscount: number` and more methods will be suggested.
+
+_Note_: If you try the demo, reject some suggestions and you see it's no longer suggesting just reload vscode (Cmd+Shift+P -> Reload Window)
+
+### Manual mode
+
+You can add a keybind to `editor.action.inlineSuggest.triggerInlineEditExplicit` to trigger the next edit suggestion manually.
 
 ## Agent Mode
 
