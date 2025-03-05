@@ -11,11 +11,18 @@
 // Import Routes
 
 import { Route as rootRoute } from './routes/__root'
+import { Route as CalendarImport } from './routes/calendar'
 import { Route as CalculatorImport } from './routes/calculator'
 import { Route as BoardImport } from './routes/board'
 import { Route as IndexImport } from './routes/index'
 
 // Create/Update Routes
+
+const CalendarRoute = CalendarImport.update({
+  id: '/calendar',
+  path: '/calendar',
+  getParentRoute: () => rootRoute,
+} as any)
 
 const CalculatorRoute = CalculatorImport.update({
   id: '/calculator',
@@ -60,6 +67,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof CalculatorImport
       parentRoute: typeof rootRoute
     }
+    '/calendar': {
+      id: '/calendar'
+      path: '/calendar'
+      fullPath: '/calendar'
+      preLoaderRoute: typeof CalendarImport
+      parentRoute: typeof rootRoute
+    }
   }
 }
 
@@ -69,12 +83,14 @@ export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/board': typeof BoardRoute
   '/calculator': typeof CalculatorRoute
+  '/calendar': typeof CalendarRoute
 }
 
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/board': typeof BoardRoute
   '/calculator': typeof CalculatorRoute
+  '/calendar': typeof CalendarRoute
 }
 
 export interface FileRoutesById {
@@ -82,14 +98,15 @@ export interface FileRoutesById {
   '/': typeof IndexRoute
   '/board': typeof BoardRoute
   '/calculator': typeof CalculatorRoute
+  '/calendar': typeof CalendarRoute
 }
 
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/' | '/board' | '/calculator'
+  fullPaths: '/' | '/board' | '/calculator' | '/calendar'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/board' | '/calculator'
-  id: '__root__' | '/' | '/board' | '/calculator'
+  to: '/' | '/board' | '/calculator' | '/calendar'
+  id: '__root__' | '/' | '/board' | '/calculator' | '/calendar'
   fileRoutesById: FileRoutesById
 }
 
@@ -97,12 +114,14 @@ export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
   BoardRoute: typeof BoardRoute
   CalculatorRoute: typeof CalculatorRoute
+  CalendarRoute: typeof CalendarRoute
 }
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   BoardRoute: BoardRoute,
   CalculatorRoute: CalculatorRoute,
+  CalendarRoute: CalendarRoute,
 }
 
 export const routeTree = rootRoute
@@ -117,7 +136,8 @@ export const routeTree = rootRoute
       "children": [
         "/",
         "/board",
-        "/calculator"
+        "/calculator",
+        "/calendar"
       ]
     },
     "/": {
@@ -128,6 +148,9 @@ export const routeTree = rootRoute
     },
     "/calculator": {
       "filePath": "calculator.tsx"
+    },
+    "/calendar": {
+      "filePath": "calendar.tsx"
     }
   }
 }

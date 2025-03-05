@@ -171,6 +171,12 @@ Write md files somewhere and use them as context https://code.visualstudio.com/d
 
 ## Copilot Edits
 
+### Create a large component from scratch
+
+Entry: `src/components/calendar.tsx`
+
+Prompt: Make a big calendar to display the events #file:calendar-events.ts
+
 ### Edit multiple files
 
 Entry: `src/routes/calculator.tsx`
