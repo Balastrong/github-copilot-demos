@@ -1,22 +1,22 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
-import logo from "../logo.svg";
+import logo from "../../copilot.png";
 
 // Define constant values at the top of the file in UPPER_SNAKE_CASE as per instructions
 const DEMO_ROUTES = [
   {
     path: "/board",
     name: "Board Demo",
-    description: "Kanban board demo with Agent Mode",
+    description: "Kanban board using Agent Mode",
   },
   {
     path: "/calculator",
     name: "Calculator Demo",
-    description: "Calculator demo with Copilot Edits",
+    description: "Calculator using Copilot Edits",
   },
   {
     path: "/calendar",
     name: "Calendar Demo",
-    description: "Calendar component with events",
+    description: "Calendar with stacked events",
   },
 ] as const;
 
@@ -32,7 +32,7 @@ function App() {
         <div className="flex items-center mb-4">
           <img
             src={logo}
-            className="h-[100px] pointer-events-none animate-[spin_20s_linear_infinite]"
+            className="h-[100px] pointer-events-none"
             alt="logo"
           />
           <h1 className="text-4xl font-bold ml-4">GitHub Copilot Demos</h1>
