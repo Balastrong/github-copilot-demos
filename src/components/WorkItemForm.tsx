@@ -1,4 +1,4 @@
-type WorkItem = {
+export type WorkItem = {
   title: string;
   description: string;
   assignedTo: string;
