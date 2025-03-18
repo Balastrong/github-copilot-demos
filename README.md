@@ -165,15 +165,17 @@ Set as value: `{ "text": "Always use vitest as testing framework" }`
 
 ## Prompt files
 
-TODO
+Entry: `src/components/WorkItemForm.tsx`
 
-Write md files somewhere and use them as context https://code.visualstudio.com/docs/copilot/copilot-customization#_usage
+Open the chat and prompt `Create a form`
+
+The form will likely be a generic html form, try again by attaching a Prompt and selecting `react-form` from the dropdown
 
 ## Copilot Edits
 
 ### Create a large component from scratch
 
-Entry: `src/components/calendar.tsx`
+Entry: `src/components/Calendar.tsx`
 
 Prompt: Make a big calendar to display the events #file:calendar-events.ts
 
