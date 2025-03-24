@@ -38,21 +38,30 @@ If you want to see some examples on how to run the demos, these are some of my r
 
 - [Ghost Text](#ghost-text)
   - [Simple Code Generation](#simple-code-generation)
-  - [Code Panel (Feature Name?)](#code-panel-feature-name)
-  - [Temporary (pasted) Context](#temporary-pasted-context)
+  - [Code Panel](#code-panel)
+  - [Temporary Context](#temporary-context)
+- [Next Edit Suggestion](#next-edit-suggestion)
+  - [Manual Mode](#manual-mode)
 - [Inline Chat](#inline-chat)
   - [Generate Code & Tests](#generate-code--tests)
 - [Chat Context](#chat-context)
-  - [File/Folder/Sym](#filefoldersym)
+  - [File/Folder/Symbol](#filefoldersymbol)
   - [Codebase](#codebase)
   - [Problems](#problems)
 - [Copilot Customization](#copilot-customization)
   - [Chat Code Generation](#chat-code-generation)
   - [Commit Instructions](#commit-instructions)
   - [Test Generation](#test-generation)
-- [Prompt files](#prompt-files)
+- [Prompt Files](#prompt-files)
 - [Copilot Edits](#copilot-edits)
+  - [Create a Large Component from Scratch](#create-a-large-component-from-scratch)
+  - [Edit Multiple Files](#edit-multiple-files)
 - [Agent Mode](#agent-mode)
+- [Copilot Vision](#copilot-vision)
+  - [Alt Text](#alt-text)
+  - [Image to Code](#image-to-code)
+  - [Double Model Trick](#double-model-trick)
+- [Model Selector](#model-selector)
 - [Contributing](#contributing)
 
 ## Requirements
@@ -90,6 +99,24 @@ If the context is on the text of an Issue, on Slack or anywehre else and you can
 Paste on the file: `Create an item with name, description, price and imgUrl`
 
 Start typing `"item"` and see the ghost text completing the right keys and labels
+
+## Next Edit Suggestion
+
+Copilot suggests the next edit anywhere in your file, regardless of the cursor position.
+
+Make sure to enable the setting `github.copilot.nextEditSuggestions.enabled`
+
+Entry: `src/utils/product.ts`
+
+Go next to the `public price: number`, copilot should already suggest a new field in ghost text. Accept it and NES kicks in automatically.
+
+Add one more field `public maxDiscount: number` and more methods will be suggested.
+
+_Note_: If you try the demo, reject some suggestions and you see it's no longer suggesting just reload vscode (Cmd+Shift+P -> Reload Window)
+
+### Manual mode
+
+You can add a keybind to `editor.action.inlineSuggest.triggerInlineEditExplicit` to trigger the next edit suggestion manually.
 
 ## Inline Chat
 
@@ -165,6 +192,9 @@ Set as value: `{ "text": "Always use vitest as testing framework" }`
 
 ## Prompt files
 
+You can create custom prompts for Copilot to use when generating code, either on the repo or in your user settings.
+You can find the prompt files in the `.github/prompts` folder.
+
 Entry: `src/components/WorkItemForm.tsx`
 
 Open the chat and prompt `Create a form`
@@ -187,27 +217,9 @@ Open Copilot Edits (Cmd+Shift+I) and prompt `Implement it in the Calculator comp
 
 Possible continuations:
 
-- Use tailwind/css for the stile
+- Use tailwind/css for the style
 - Refactor the buttons in a new component
 - Add the memory buttons
-
-## Next Edit Suggestion
-
-Copilot suggests the next edit anywhere in your file, regardless of the cursor position.
-
-Make sure to enable the setting `github.copilot.nextEditSuggestions.enabled`
-
-Entry: `src/utils/product.ts`
-
-Go next to the `public price: number`, copilot should already suggest a new field in ghost text. Accept it and NES kicks in automatically.
-
-Add one more field `public maxDiscount: number` and more methods will be suggested.
-
-_Note_: If you try the demo, reject some suggestions and you see it's no longer suggesting just reload vscode (Cmd+Shift+P -> Reload Window)
-
-### Manual mode
-
-You can add a keybind to `editor.action.inlineSuggest.triggerInlineEditExplicit` to trigger the next edit suggestion manually.
 
 ## Agent Mode
 
@@ -218,6 +230,37 @@ Open the chat, set Agent mode and prompt `Implement a new KanBan board with 4 co
 Have fun with Copilot installing the dependencies and creating the components.
 
 You can ask to reorganize the code or write some tests.
+
+## Copilot Vision
+
+## Alt Text
+
+Attach the image to the chat and prompt `Generate alt text for the image`
+
+## Image to Code
+
+Entry: `src/components/weather.tsx`
+Image: `/weather-report.png`
+
+Prompt: `Create an interactive weather report form as in the attached image`
+
+Make sure to use one of the supported models like GPT-4o to _see_ the image, you can then use other models to improve the code.
+
+### Double model trick
+
+Ask GPT-4o to generate a detailed prompt to use with another model.
+
+Prompt: `Look at the attached image and generate a very well detailed prompt to use with an LLM to generate the code for this image`
+
+Or even use the `read-image.prompt.md` prompt to generate a detailed prompt.
+
+## Model Selector
+
+Completion uses gpt-4o-copilot, chat let you select the model to use.
+
+Show the dropdown and the Manage Models command.
+
+More: https://docs.github.com/en/copilot/using-github-copilot/ai-models/changing-the-ai-model-for-copilot-chat
 
 ## Contributing
 

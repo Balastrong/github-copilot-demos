@@ -12,6 +12,7 @@
 
 import { Route as rootRoute } from './routes/__root'
 import { Route as WorkItemImport } from './routes/work-item'
+import { Route as WeatherImport } from './routes/weather'
 import { Route as CalendarImport } from './routes/calendar'
 import { Route as CalculatorImport } from './routes/calculator'
 import { Route as BoardImport } from './routes/board'
@@ -22,6 +23,12 @@ import { Route as IndexImport } from './routes/index'
 const WorkItemRoute = WorkItemImport.update({
   id: '/work-item',
   path: '/work-item',
+  getParentRoute: () => rootRoute,
+} as any)
+
+const WeatherRoute = WeatherImport.update({
+  id: '/weather',
+  path: '/weather',
   getParentRoute: () => rootRoute,
 } as any)
 
@@ -81,6 +88,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof CalendarImport
       parentRoute: typeof rootRoute
     }
+    '/weather': {
+      id: '/weather'
+      path: '/weather'
+      fullPath: '/weather'
+      preLoaderRoute: typeof WeatherImport
+      parentRoute: typeof rootRoute
+    }
     '/work-item': {
       id: '/work-item'
       path: '/work-item'
@@ -98,6 +112,7 @@ export interface FileRoutesByFullPath {
   '/board': typeof BoardRoute
   '/calculator': typeof CalculatorRoute
   '/calendar': typeof CalendarRoute
+  '/weather': typeof WeatherRoute
   '/work-item': typeof WorkItemRoute
 }
 
@@ -106,6 +121,7 @@ export interface FileRoutesByTo {
   '/board': typeof BoardRoute
   '/calculator': typeof CalculatorRoute
   '/calendar': typeof CalendarRoute
+  '/weather': typeof WeatherRoute
   '/work-item': typeof WorkItemRoute
 }
 
@@ -115,15 +131,29 @@ export interface FileRoutesById {
   '/board': typeof BoardRoute
   '/calculator': typeof CalculatorRoute
   '/calendar': typeof CalendarRoute
+  '/weather': typeof WeatherRoute
   '/work-item': typeof WorkItemRoute
 }
 
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/' | '/board' | '/calculator' | '/calendar' | '/work-item'
+  fullPaths:
+    | '/'
+    | '/board'
+    | '/calculator'
+    | '/calendar'
+    | '/weather'
+    | '/work-item'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/board' | '/calculator' | '/calendar' | '/work-item'
-  id: '__root__' | '/' | '/board' | '/calculator' | '/calendar' | '/work-item'
+  to: '/' | '/board' | '/calculator' | '/calendar' | '/weather' | '/work-item'
+  id:
+    | '__root__'
+    | '/'
+    | '/board'
+    | '/calculator'
+    | '/calendar'
+    | '/weather'
+    | '/work-item'
   fileRoutesById: FileRoutesById
 }
 
@@ -132,6 +162,7 @@ export interface RootRouteChildren {
   BoardRoute: typeof BoardRoute
   CalculatorRoute: typeof CalculatorRoute
   CalendarRoute: typeof CalendarRoute
+  WeatherRoute: typeof WeatherRoute
   WorkItemRoute: typeof WorkItemRoute
 }
 
@@ -140,6 +171,7 @@ const rootRouteChildren: RootRouteChildren = {
   BoardRoute: BoardRoute,
   CalculatorRoute: CalculatorRoute,
   CalendarRoute: CalendarRoute,
+  WeatherRoute: WeatherRoute,
   WorkItemRoute: WorkItemRoute,
 }
 
@@ -157,6 +189,7 @@ export const routeTree = rootRoute
         "/board",
         "/calculator",
         "/calendar",
+        "/weather",
         "/work-item"
       ]
     },
@@ -171,6 +204,9 @@ export const routeTree = rootRoute
     },
     "/calendar": {
       "filePath": "calendar.tsx"
+    },
+    "/weather": {
+      "filePath": "weather.tsx"
     },
     "/work-item": {
       "filePath": "work-item.tsx"

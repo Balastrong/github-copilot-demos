@@ -27,6 +27,12 @@ const DEMO_ROUTES = [
     description: "Create a form with a reusable prompt",
     icon: "📝",
   },
+  {
+    path: "/weather",
+    name: "Weather Demo",
+    description: "Generate a weather report from an image",
+    icon: "🌦️",
+  },
 ] as const;
 
 export const Route = createFileRoute("/")({
@@ -132,6 +138,34 @@ function App() {
                   </h3>
                   <p className="text-gray-600">
                     Use defined prompts for common usecases
+                  </p>
+                </div>
+              </div>
+            </div>
+
+            <div className="bg-gray-50 rounded-lg p-5 border border-gray-200">
+              <div className="flex items-start">
+                <span className="text-gray-600 text-xl mr-3">🛠️</span>
+                <div>
+                  <h3 className="font-semibold text-gray-800">
+                    Custom Instructions
+                  </h3>
+                  <p className="text-gray-600">
+                    Personalize Copilot's behavior
+                  </p>
+                </div>
+              </div>
+            </div>
+
+            <div className="bg-gray-50 rounded-lg p-5 border border-gray-200">
+              <div className="flex items-start">
+                <span className="text-gray-600 text-xl mr-3">👁️</span>
+                <div>
+                  <h3 className="font-semibold text-gray-800">
+                    Copilot Vision
+                  </h3>
+                  <p className="text-gray-600">
+                    Analyze images and generate code
                   </p>
                 </div>
               </div>
