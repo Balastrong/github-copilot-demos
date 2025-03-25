@@ -1,39 +1,7 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import logo from "../../copilot.png";
+import { COPILOT_FEATURES, DEMO_ROUTES } from "@/data";
 
-// Define constant values at the top of the file in UPPER_SNAKE_CASE as per instructions
-const DEMO_ROUTES = [
-  {
-    path: "/board",
-    name: "Board Demo",
-    description: "Kanban board using Agent Mode",
-    icon: "📋",
-  },
-  {
-    path: "/calculator",
-    name: "Calculator Demo",
-    description: "Calculator using Copilot Edits",
-    icon: "🧮",
-  },
-  {
-    path: "/calendar",
-    name: "Calendar Demo",
-    description: "Calendar with stacked events",
-    icon: "📅",
-  },
-  {
-    path: "/work-item",
-    name: "Form Demo",
-    description: "Create a form with a reusable prompt",
-    icon: "📝",
-  },
-  {
-    path: "/weather",
-    name: "Weather Demo",
-    description: "Generate a weather report from an image",
-    icon: "🌦️",
-  },
-] as const;
 
 export const Route = createFileRoute("/")({
   component: App,
@@ -60,7 +28,7 @@ function App() {
       {/* Main Content */}
       <main className="flex-grow flex flex-col items-center px-4 py-8">
         {/* Demo Cards */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 w-full max-w-6xl">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 w-full max-w-6xl">
           {DEMO_ROUTES.map((route) => (
             <Link
               key={route.path}
@@ -83,117 +51,20 @@ function App() {
             Copilot Features
           </h2>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-            <div className="bg-gray-50 rounded-lg p-5 border border-gray-200">
-              <div className="flex items-start">
-                <span className="text-gray-600 text-xl mr-3">✨</span>
-                <div>
-                  <h3 className="font-semibold text-gray-800">Ghost Text</h3>
-                  <p className="text-gray-600">Code completion as you type</p>
+            {COPILOT_FEATURES.map((feature, index) => (
+              <div 
+                key={index} 
+                className={`bg-gray-50 rounded-lg p-5 border border-gray-200`}
+              >
+                <div className="flex items-start">
+                  <span className="text-gray-600 text-xl mr-3">{feature.icon}</span>
+                  <div>
+                    <h3 className="font-semibold text-gray-800">{feature.title}</h3>
+                    <p className="text-gray-600">{feature.description}</p>
+                  </div>
                 </div>
               </div>
-            </div>
-
-            <div className="bg-gray-50 rounded-lg p-5 border border-gray-200">
-              <div className="flex items-start">
-                <span className="text-gray-600 text-xl mr-3">🔄</span>
-                <div>
-                  <h3 className="font-semibold text-gray-800">
-                    Next Edit Suggestion
-                  </h3>
-                  <p className="text-gray-600">
-                    Get suggestions anywhere in the file
-                  </p>
-                </div>
-              </div>
-            </div>
-
-            <div className="bg-gray-50 rounded-lg p-5 border border-gray-200">
-              <div className="flex items-start">
-                <span className="text-gray-600 text-xl mr-3">💬</span>
-                <div>
-                  <h3 className="font-semibold text-gray-800">Inline Chat</h3>
-                  <p className="text-gray-600">Get context and suggestions</p>
-                </div>
-              </div>
-            </div>
-
-            <div className="bg-gray-50 rounded-lg p-5 border border-gray-200">
-              <div className="flex items-start">
-                <span className="text-gray-600 text-xl mr-3">🔍</span>
-                <div>
-                  <h3 className="font-semibold text-gray-800">Chat Context</h3>
-                  <p className="text-gray-600">
-                    Attach context to your prompts
-                  </p>
-                </div>
-              </div>
-            </div>
-
-            <div className="bg-gray-50 rounded-lg p-5 border border-gray-200">
-              <div className="flex items-start">
-                <span className="text-gray-600 text-xl mr-3">🔁</span>
-                <div>
-                  <h3 className="font-semibold text-gray-800">
-                    Reusable Prompts
-                  </h3>
-                  <p className="text-gray-600">
-                    Use defined prompts for common usecases
-                  </p>
-                </div>
-              </div>
-            </div>
-
-            <div className="bg-gray-50 rounded-lg p-5 border border-gray-200">
-              <div className="flex items-start">
-                <span className="text-gray-600 text-xl mr-3">🛠️</span>
-                <div>
-                  <h3 className="font-semibold text-gray-800">
-                    Custom Instructions
-                  </h3>
-                  <p className="text-gray-600">
-                    Personalize Copilot's behavior
-                  </p>
-                </div>
-              </div>
-            </div>
-
-            <div className="bg-gray-50 rounded-lg p-5 border border-gray-200">
-              <div className="flex items-start">
-                <span className="text-gray-600 text-xl mr-3">👁️</span>
-                <div>
-                  <h3 className="font-semibold text-gray-800">
-                    Copilot Vision
-                  </h3>
-                  <p className="text-gray-600">
-                    Analyze images and generate code
-                  </p>
-                </div>
-              </div>
-            </div>
-
-            <div className="bg-gray-50 rounded-lg p-5 border border-gray-200">
-              <div className="flex items-start">
-                <span className="text-gray-600 text-xl mr-3">✏️</span>
-                <div>
-                  <h3 className="font-semibold text-gray-800">Copilot Edits</h3>
-                  <p className="text-gray-600">
-                    Let Copilot make changes across files
-                  </p>
-                </div>
-              </div>
-            </div>
-
-            <div className="bg-gray-50 rounded-lg p-5 border border-gray-200 col-span-1 md:col-span-2">
-              <div className="flex items-start">
-                <span className="text-gray-600 text-xl mr-3">🤖</span>
-                <div>
-                  <h3 className="font-semibold text-gray-800">Agent Mode</h3>
-                  <p className="text-gray-600">
-                    Complete complex tasks autonomously
-                  </p>
-                </div>
-              </div>
-            </div>
+            ))}
           </div>
         </div>
 
