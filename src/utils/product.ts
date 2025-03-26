@@ -4,7 +4,11 @@ class Product {
     public price: number,
   ) {}
 
-  toString() {
-    return `${this.name} costs $${this.price}`;
+  getProductDetails() {
+    return `${this.name} costs $${this.price}.`;
+  }
+
+  getDiscountedPrice(discount: number): number {
+    return this.price - (this.price * discount) / 100;
   }
 }

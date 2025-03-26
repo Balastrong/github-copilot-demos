@@ -96,7 +96,7 @@ Entry: `src/localization/en.json`
 
 If the context is on the text of an Issue, on Slack or anywehre else and you can paste it...
 
-Paste on the file: `Create an item with name, description, price and imgUrl`
+Paste on the file: `Create an item with name, description, price, imgUrl and availability that can be low, medium or high`
 
 Start typing `"item"` and see the ghost text completing the right keys and labels
 

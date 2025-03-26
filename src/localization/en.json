@@ -8,11 +8,5 @@
       "multiply": "Multiply",
       "divide": "Divide"
     }
-  },
-  "item": {
-    "name": "Item Name",
-    "description": "Item Description",
-    "price": "Item Price",
-    "imgUrl": "Item Image URL"
   }
 }
