@@ -233,11 +233,11 @@ You can ask to reorganize the code or write some tests.
 
 ## Copilot Vision
 
-## Alt Text
+### Alt Text
 
 Attach the image to the chat and prompt `Generate alt text for the image`
 
-## Image to Code
+### Image to Code
 
 Entry: `src/components/weather.tsx`
 Image: `/weather-report.png`
