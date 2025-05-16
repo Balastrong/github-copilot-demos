@@ -52,7 +52,7 @@ If you want to see some examples on how to run the demos, these are some of my r
   - [Chat Code Generation](#chat-code-generation)
   - [Commit Instructions](#commit-instructions)
   - [Test Generation](#test-generation)
-- [Prompt Files](#prompt-files)
+- [Instruction Files](#instruction-files)
 - [Copilot Edits](#copilot-edits)
   - [Create a Large Component from Scratch](#create-a-large-component-from-scratch)
   - [Edit Multiple Files](#edit-multiple-files)
@@ -190,16 +190,16 @@ Set as value: `{ "text": "Do not use conventional commit message format." }` and
 
 Set as value: `{ "text": "Always use vitest as testing framework" }`
 
-## Prompt files
+## Instruction files
 
-You can create custom prompts for Copilot to use when generating code, either on the repo or in your user settings.
-You can find the prompt files in the `.github/prompts` folder.
+You can create custom instructions for Copilot to use when generating code, either on the repo or in your user settings.
+You can find the instruction files in the `.github/instructions` folder.
 
 Entry: `src/components/WorkItemForm.tsx`
 
 Open the chat and prompt `Create a form`
 
-The form will likely be a generic html form, try again by attaching a Prompt and selecting `react-form` from the dropdown
+The form will likely be a generic html form, try again by attaching an Instruction file and selecting `react-form` from the dropdown
 
 ## Copilot Edits
 
